@@ -248,6 +248,75 @@ public class KonversiSuhuGUI extends javax.swing.JFrame {
     if (!Character.isDigit(c) && c != '.') {
         evt.consume(); // Hentikan input
         JOptionPane.showMessageDialog(this, "Input hanya boleh angka!", "Error", JOptionPane.ERROR_MESSAGE);
+    }else {
+        // Panggil logika konversi otomatis
+        otomatisKonversi();
+    }
+}
+
+private void otomatisKonversi() {
+    try {
+        // Validasi input kosong
+        if (txtInputSuhu.getText().trim().isEmpty()) {
+            txtHasilKonversi.setText(""); // Kosongkan hasil jika input kosong
+            return;
+        }
+
+        // Ambil input suhu
+        double inputSuhu = Double.parseDouble(txtInputSuhu.getText());
+
+        // Ambil jenis konversi
+        String jenisKonversi = cmbJenisKonversi.getSelectedItem().toString();
+
+        // Variabel untuk hasil konversi
+        double hasilKonversi = 0;
+
+        // Logika konversi berdasarkan pilihan
+        switch (jenisKonversi) {
+            case "Fahrenheit ke Celcius":
+                hasilKonversi = (inputSuhu - 32) * 5 / 9;
+                break;
+            case "Fahrenheit ke Kelvin":
+                hasilKonversi = (inputSuhu - 32) * 5 / 9 + 273.15;
+                break;
+            case "Fahrenheit ke Reamur":
+                hasilKonversi = (inputSuhu - 32) * 4 / 9;
+                break;
+            case "Celcius ke Fahrenheit":
+                hasilKonversi = (inputSuhu * 9 / 5) + 32;
+                break;
+            case "Celcius ke Kelvin":
+                hasilKonversi = inputSuhu + 273.15;
+                break;
+            case "Celcius ke Reamur":
+                hasilKonversi = inputSuhu * 4 / 5;
+                break;
+            case "Kelvin ke Fahrenheit":
+                hasilKonversi = (inputSuhu - 273.15) * 9 / 5 + 32;
+                break;
+            case "Kelvin ke Celcius":
+                hasilKonversi = inputSuhu - 273.15;
+                break;
+            case "Kelvin ke Reamur":
+                hasilKonversi = (inputSuhu - 273.15) * 4 / 5;
+                break;
+            case "Reamur ke Fahrenheit":
+                hasilKonversi = (inputSuhu * 9 / 4) + 32;
+                break;
+            case "Reamur ke Celcius":
+                hasilKonversi = inputSuhu * 5 / 4;
+                break;
+            case "Reamur ke Kelvin":
+                hasilKonversi = (inputSuhu * 5 / 4) + 273.15;
+                break;
+            default:
+                throw new IllegalArgumentException("Jenis konversi tidak valid.");
+        }
+
+        // Tampilkan hasil
+        txtHasilKonversi.setText(String.format("%.2f", hasilKonversi));
+    } catch (NumberFormatException e) {
+        txtHasilKonversi.setText(""); // Kosongkan hasil jika input tidak valid
     }
     }//GEN-LAST:event_txtInputSuhuKeyTyped
 
