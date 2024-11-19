@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -16,6 +19,90 @@ public class KonversiSuhuGUI2 extends javax.swing.JFrame {
     public KonversiSuhuGUI2() {
         initComponents();
     }
+private void konversiSuhu() {
+    try {
+        // Ambil input suhu
+        double inputSuhu = Double.parseDouble(txtInputSuhu.getText());
+        double hasil = 0.0;
+        String asalSuhu = cmbSuhuAsal.getSelectedItem().toString();
+
+        // Konversi berdasarkan pilihan
+        if (rbtnCelcius.isSelected()) {
+            switch (asalSuhu) {
+                case "CELCIUS":
+                    hasil = inputSuhu;
+                    break;
+                case "FAHRENHEIT":
+                    hasil = (inputSuhu - 32) * 5 / 9;
+                    break;
+                case "REAMUR":
+                    hasil = inputSuhu * 5 / 4;
+                    break;
+                case "KELVIN":
+                    hasil = inputSuhu - 273.15;
+                    break;
+                default:
+                    break;
+            }
+        } else if (rbtnFahrenheit.isSelected()) {
+            switch (asalSuhu) {
+                case "CELCIUS":
+                    hasil = (inputSuhu * 9 / 5) + 32;
+                    break;
+                case "FAHRENHEIT":
+                    hasil = inputSuhu;
+                    break;
+                case "REAMUR":
+                    hasil = (inputSuhu * 9 / 4) + 32;
+                    break;
+                case "KELVIN":
+                    hasil = (inputSuhu - 273.15) * 9 / 5 + 32;
+                    break;
+                default:
+                    break;
+            }
+        } else if (rbtnReamur.isSelected()) {
+            switch (asalSuhu) {
+                case "CELCIUS":
+                    hasil = inputSuhu * 4 / 5;
+                    break;
+                case "FAHRENHEIT":
+                    hasil = (inputSuhu - 32) * 4 / 9;
+                    break;
+                case "REAMUR":
+                    hasil = inputSuhu;
+                    break;
+                case "KELVIN":
+                    hasil = (inputSuhu - 273.15) * 4 / 5;
+                    break;
+                default:
+                    break;
+            }
+        } else if (rbtnKelvin.isSelected()) {
+            switch (asalSuhu) {
+                case "CELCIUS":
+                    hasil = inputSuhu + 273.15;
+                    break;
+                case "FAHRENHEIT":
+                    hasil = (inputSuhu - 32) * 5 / 9 + 273.15;
+                    break;
+                case "REAMUR":
+                    hasil = (inputSuhu * 5 / 4) + 273.15;
+                    break;
+                case "KELVIN":
+                    hasil = inputSuhu;
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        // Tampilkan hasil
+        txtHasilKonversi.setText(String.format("%.2f", hasil));
+    } catch (NumberFormatException ex) {
+        JOptionPane.showMessageDialog(this, "Masukkan nilai suhu yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+}
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -26,21 +113,149 @@ public class KonversiSuhuGUI2 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jRadioButton5 = new javax.swing.JRadioButton();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        cmbSuhuAsal = new javax.swing.JComboBox<>();
+        txtInputSuhu = new javax.swing.JTextField();
+        rbtnCelcius = new javax.swing.JRadioButton();
+        rbtnFahrenheit = new javax.swing.JRadioButton();
+        rbtnReamur = new javax.swing.JRadioButton();
+        rbtnKelvin = new javax.swing.JRadioButton();
+        jLabel2 = new javax.swing.JLabel();
+        txtHasilKonversi = new javax.swing.JTextField();
+        btnKonversi = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 457, Short.MAX_VALUE)
+        jRadioButton5.setText("jRadioButton5");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 51, 51));
+
+        jLabel1.setFont(new java.awt.Font("Calisto MT", 1, 18)); // NOI18N
+        jLabel1.setText("APLIKASI KONVERSI SUHU");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addContainerGap(25, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(82, 13, -1, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 255, 204));
+
+        cmbSuhuAsal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CELCIUS", "FAHRENHEIT", "KELVIN", "REAMUR", " " }));
+
+        rbtnCelcius.setText("Ke Celcius");
+
+        rbtnFahrenheit.setText("Ke Fahrenheit");
+
+        rbtnReamur.setText("Ke Reamur");
+
+        rbtnKelvin.setText("Ke Kelvin");
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setText("Hasil Konversi");
+
+        btnKonversi.setText("KONVERSI");
+        btnKonversi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonversiActionPerformed(evt);
+            }
+        });
+
+        btnExit.setText("EXIT");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(94, 94, 94)
+                        .addComponent(cmbSuhuAsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(45, 45, 45)
+                        .addComponent(txtInputSuhu, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addComponent(rbtnCelcius)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtnFahrenheit)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtnReamur)
+                        .addGap(18, 18, 18)
+                        .addComponent(rbtnKelvin)))
+                .addContainerGap(25, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
+                .addComponent(txtHasilKonversi, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnKonversi)
+                .addGap(44, 44, 44))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExit, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbSuhuAsal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtInputSuhu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(rbtnCelcius)
+                    .addComponent(rbtnFahrenheit)
+                    .addComponent(rbtnReamur)
+                    .addComponent(rbtnKelvin))
+                .addGap(38, 38, 38)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtHasilKonversi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnKonversi))
+                .addGap(18, 18, 18)
+                .addComponent(btnExit)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 85, 460, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnKonversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonversiActionPerformed
+        konversiSuhu(); // Panggil metode konversi suhu
+    
+    }//GEN-LAST:event_btnKonversiActionPerformed
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+        System.exit(0); // Tutup aplikasi
+    }//GEN-LAST:event_btnExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +293,19 @@ public class KonversiSuhuGUI2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnKonversi;
+    private javax.swing.JComboBox<String> cmbSuhuAsal;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioButton5;
+    private javax.swing.JRadioButton rbtnCelcius;
+    private javax.swing.JRadioButton rbtnFahrenheit;
+    private javax.swing.JRadioButton rbtnKelvin;
+    private javax.swing.JRadioButton rbtnReamur;
+    private javax.swing.JTextField txtHasilKonversi;
+    private javax.swing.JTextField txtInputSuhu;
     // End of variables declaration//GEN-END:variables
 }
