@@ -81,6 +81,11 @@ public class KonversiSuhuGUI extends javax.swing.JFrame {
 
         jLabel4.setText("HASIL KONVERSI");
 
+        txtInputSuhu.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtInputSuhuFocusGained(evt);
+            }
+        });
         txtInputSuhu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtInputSuhuKeyTyped(evt);
@@ -329,6 +334,15 @@ private void otomatisKonversi() {
     txtHasilKonversi.setText(""); // Kosongkan hasil konversi
     cmbJenisKonversi.setSelectedIndex(0); // Reset dropdown ke pilihan pertama
     }//GEN-LAST:event_btnHapusActionPerformed
+
+    private void txtInputSuhuFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtInputSuhuFocusGained
+       txtInputSuhu.addFocusListener(new java.awt.event.FocusAdapter() {
+    public void focusGained(java.awt.event.FocusEvent evt) {
+        txtInputSuhu.setText(""); // Kosongkan input saat mendapatkan fokus
+    }
+});
+
+    }//GEN-LAST:event_txtInputSuhuFocusGained
 
     /**
      * @param args the command line arguments
