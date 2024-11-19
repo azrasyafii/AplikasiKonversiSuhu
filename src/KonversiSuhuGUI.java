@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -26,21 +29,237 @@ public class KonversiSuhuGUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jLabel5 = new javax.swing.JLabel();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        txtInputSuhu = new javax.swing.JTextField();
+        cmbJenisKonversi = new javax.swing.JComboBox<>();
+        btnKonversi = new javax.swing.JButton();
+        btnExit = new javax.swing.JButton();
+        txtHasilKonversi = new javax.swing.JTextField();
+        btnHapus = new javax.swing.JButton();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        jLabel5.setText("jLabel5");
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(600, 450));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("Calisto MT", 1, 18)); // NOI18N
+        jLabel1.setText("APLIKASI KONVERSI SUHU");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(15, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 10, 290, 50));
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+
+        jLabel2.setText("MASUKKAN SUHU");
+
+        jLabel3.setText("PILIH KONVERSI");
+
+        jLabel4.setText("HASIL KONVERSI");
+
+        txtInputSuhu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInputSuhuKeyTyped(evt);
+            }
+        });
+
+        cmbJenisKonversi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Fahrenheit ke Celcius", "Fahrenheit ke Kelvin", "Fahrenheit ke Reamur", "Celcius ke Fahrenheit", "Celcius ke Kelvin", "Celcius ke Reamur", "Kelvin ke Fahrenheit", "Kelvin ke Celcius", "Kelvin ke Reamur", "Reamur ke Fahrenheit", "Reamur ke Celcius", "Reamur ke Kelvin" }));
+        cmbJenisKonversi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbJenisKonversiActionPerformed(evt);
+            }
+        });
+
+        btnKonversi.setText("KONVERSI");
+        btnKonversi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnKonversiActionPerformed(evt);
+            }
+        });
+
+        btnExit.setText("EXIT");
+        btnExit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExitActionPerformed(evt);
+            }
+        });
+
+        txtHasilKonversi.setEditable(false);
+
+        btnHapus.setText("HAPUS");
+        btnHapus.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHapusActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addGap(65, 65, 65)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtInputSuhu)
+                            .addComponent(cmbJenisKonversi, 0, 229, Short.MAX_VALUE)
+                            .addComponent(txtHasilKonversi)))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(110, 110, 110)
+                        .addComponent(btnKonversi)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnHapus)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnExit)))
+                .addContainerGap(80, Short.MAX_VALUE))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(txtInputSuhu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel3)
+                    .addComponent(cmbJenisKonversi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel4)
+                    .addComponent(txtHasilKonversi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnKonversi)
+                    .addComponent(btnExit)
+                    .addComponent(btnHapus))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+
+        getContentPane().add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 510, 190));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbJenisKonversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbJenisKonversiActionPerformed
+
+    }//GEN-LAST:event_cmbJenisKonversiActionPerformed
+
+    private void btnKonversiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKonversiActionPerformed
+         try {
+         // Validasi input kosong
+        if (txtInputSuhu.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Masukkan nilai suhu terlebih dahulu!", "Error", JOptionPane.WARNING_MESSAGE);
+            return;
+        }
+        
+        // Ambil input suhu
+        double inputSuhu = Double.parseDouble(txtInputSuhu.getText());
+
+        // Ambil jenis konversi
+        String jenisKonversi = cmbJenisKonversi.getSelectedItem().toString();
+
+        // Variabel untuk hasil konversi
+        double hasilKonversi = 0;
+
+        // Logika konversi berdasarkan pilihan
+        switch (jenisKonversi) {
+            case "Fahrenheit ke Celcius":
+                hasilKonversi = (inputSuhu - 32) * 5 / 9;
+                break;
+            case "Fahrenheit ke Kelvin":
+                hasilKonversi = (inputSuhu - 32) * 5 / 9 + 273.15;
+                break;
+            case "Fahrenheit ke Reamur":
+                hasilKonversi = (inputSuhu - 32) * 4 / 9;
+                break;
+            case "Celcius ke Fahrenheit":
+                hasilKonversi = (inputSuhu * 9 / 5) + 32;
+                break;
+            case "Celcius ke Kelvin":
+                hasilKonversi = inputSuhu + 273.15;
+                break;
+            case "Celcius ke Reamur":
+                hasilKonversi = inputSuhu * 4 / 5;
+                break;
+            case "Kelvin ke Fahrenheit":
+                hasilKonversi = (inputSuhu - 273.15) * 9 / 5 + 32;
+                break;
+            case "Kelvin ke Celcius":
+                hasilKonversi = inputSuhu - 273.15;
+                break;
+            case "Kelvin ke Reamur":
+                hasilKonversi = (inputSuhu - 273.15) * 4 / 5;
+                break;
+            case "Reamur ke Fahrenheit":
+                hasilKonversi = (inputSuhu * 9 / 4) + 32;
+                break;
+            case "Reamur ke Celcius":
+                hasilKonversi = inputSuhu * 5 / 4;
+                break;
+            case "Reamur ke Kelvin":
+                hasilKonversi = (inputSuhu * 5 / 4) + 273.15;
+                break;
+            default:
+                throw new IllegalArgumentException("Jenis konversi tidak valid.");
+        }
+
+        // Tampilkan hasil
+        txtHasilKonversi.setText(String.format("%.2f", hasilKonversi));
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Masukkan nilai suhu yang valid!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+         
+    }//GEN-LAST:event_btnKonversiActionPerformed
+
+    private void txtInputSuhuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputSuhuKeyTyped
+         char c = evt.getKeyChar();
+    // Cek apakah karakter bukan angka atau bukan titik
+    if (!Character.isDigit(c) && c != '.') {
+        evt.consume(); // Hentikan input
+        JOptionPane.showMessageDialog(this, "Input hanya boleh angka!", "Error", JOptionPane.ERROR_MESSAGE);
+    }
+    }//GEN-LAST:event_txtInputSuhuKeyTyped
+
+    private void btnExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExitActionPerformed
+         System.exit(0); // Keluar dari aplikasi
+    }//GEN-LAST:event_btnExitActionPerformed
+
+    private void btnHapusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHapusActionPerformed
+        txtInputSuhu.setText("");  // Kosongkan input suhu
+    txtHasilKonversi.setText(""); // Kosongkan hasil konversi
+    cmbJenisKonversi.setSelectedIndex(0); // Reset dropdown ke pilihan pertama
+    }//GEN-LAST:event_btnHapusActionPerformed
 
     /**
      * @param args the command line arguments
@@ -78,5 +297,18 @@ public class KonversiSuhuGUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExit;
+    private javax.swing.JButton btnHapus;
+    private javax.swing.JButton btnKonversi;
+    private javax.swing.JComboBox<String> cmbJenisKonversi;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField txtHasilKonversi;
+    private javax.swing.JTextField txtInputSuhu;
     // End of variables declaration//GEN-END:variables
 }
