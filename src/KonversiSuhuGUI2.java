@@ -13,12 +13,41 @@ import javax.swing.JOptionPane;
  */
 public class KonversiSuhuGUI2 extends javax.swing.JFrame {
 
-    /**
-     * Creates new form KonversiSuhuGUI2
-     */
+    private String arahKonversi = "Celcius"; // Default arah konversi
+
     public KonversiSuhuGUI2() {
         initComponents();
+        // Tambahkan ItemListener untuk setiap radio button
+rbtnCelcius.addItemListener(evt -> {
+    if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        arahKonversi = "Celcius"; // Set arah konversi ke Celcius
+        konversiSuhu(); // Panggil fungsi konversi
     }
+});
+
+rbtnFahrenheit.addItemListener(evt -> {
+    if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        arahKonversi = "Fahrenheit"; // Set arah konversi ke Fahrenheit
+        konversiSuhu(); // Panggil fungsi konversi
+    }
+});
+
+rbtnReamur.addItemListener(evt -> {
+    if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        arahKonversi = "Reamur"; // Set arah konversi ke Reamur
+        konversiSuhu(); // Panggil fungsi konversi
+    }
+});
+
+rbtnKelvin.addItemListener(evt -> {
+    if (evt.getStateChange() == java.awt.event.ItemEvent.SELECTED) {
+        arahKonversi = "Kelvin"; // Set arah konversi ke Kelvin
+        konversiSuhu(); // Panggil fungsi konversi
+    }
+});
+
+    }
+    
 private void konversiSuhu() {
     try {
         // Ambil input suhu
@@ -114,6 +143,7 @@ private void konversiSuhu() {
     private void initComponents() {
 
         jRadioButton5 = new javax.swing.JRadioButton();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -131,6 +161,7 @@ private void konversiSuhu() {
         jRadioButton5.setText("jRadioButton5");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(500, 400));
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 51, 51));
@@ -161,12 +192,32 @@ private void konversiSuhu() {
 
         cmbSuhuAsal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "CELCIUS", "FAHRENHEIT", "KELVIN", "REAMUR", " " }));
 
-        rbtnCelcius.setText("Ke Celcius");
+        txtInputSuhu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtInputSuhuActionPerformed(evt);
+            }
+        });
+        txtInputSuhu.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtInputSuhuKeyTyped(evt);
+            }
+        });
 
+        buttonGroup1.add(rbtnCelcius);
+        rbtnCelcius.setText("Ke Celcius");
+        rbtnCelcius.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rbtnCelciusActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(rbtnFahrenheit);
         rbtnFahrenheit.setText("Ke Fahrenheit");
 
+        buttonGroup1.add(rbtnReamur);
         rbtnReamur.setText("Ke Reamur");
 
+        buttonGroup1.add(rbtnKelvin);
         rbtnKelvin.setText("Ke Kelvin");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -257,6 +308,52 @@ private void konversiSuhu() {
         System.exit(0); // Tutup aplikasi
     }//GEN-LAST:event_btnExitActionPerformed
 
+    private void txtInputSuhuKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtInputSuhuKeyTyped
+        char c = evt.getKeyChar();
+    
+    // Izinkan angka, tanda minus (-), dan titik desimal (.)
+    if (!Character.isDigit(c) && c != '.' && c != '-') {
+        evt.consume(); // Abaikan input selain angka, tanda minus, dan titik
+        JOptionPane.showMessageDialog(this, "Input hanya boleh berupa angka!", "Peringatan", JOptionPane.WARNING_MESSAGE);
+    }
+
+    // Mencegah lebih dari satu titik desimal
+    if (c == '.' && txtInputSuhu.getText().contains(".")) {
+        evt.consume();
+    }
+
+    // Mencegah lebih dari satu tanda minus (-)
+    if (c == '-' && txtInputSuhu.getCaretPosition() != 0) {
+        evt.consume();
+    }
+    }//GEN-LAST:event_txtInputSuhuKeyTyped
+
+    private void txtInputSuhuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtInputSuhuActionPerformed
+       // Tambahkan DocumentListener untuk memantau perubahan input suhu
+txtInputSuhu.getDocument().addDocumentListener(new javax.swing.event.DocumentListener() {
+    @Override
+    public void insertUpdate(javax.swing.event.DocumentEvent e) {
+        konversiSuhu(); // Lakukan konversi saat input berubah
+    }
+
+    @Override
+    public void removeUpdate(javax.swing.event.DocumentEvent e) {
+        konversiSuhu(); // Lakukan konversi saat input dihapus
+    }
+
+    @Override
+    public void changedUpdate(javax.swing.event.DocumentEvent e) {
+        konversiSuhu(); // Lakukan konversi saat terjadi perubahan format
+    }
+});
+
+    }//GEN-LAST:event_txtInputSuhuActionPerformed
+
+    private void rbtnCelciusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCelciusActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rbtnCelciusActionPerformed
+
+    
     /**
      * @param args the command line arguments
      */
@@ -286,6 +383,7 @@ private void konversiSuhu() {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
                 new KonversiSuhuGUI2().setVisible(true);
             }
@@ -295,6 +393,7 @@ private void konversiSuhu() {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExit;
     private javax.swing.JButton btnKonversi;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbSuhuAsal;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
